@@ -12,8 +12,6 @@ namespace MyWeather
     {
         public App()
         {
-            Device.SetFlags(new[] { "Markup_Experimental" });
-
             FFImageLoading.ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration
             {
                 HttpHeadersTimeout = 60

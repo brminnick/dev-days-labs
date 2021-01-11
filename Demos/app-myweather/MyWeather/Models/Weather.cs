@@ -102,7 +102,7 @@ namespace MyWeather.Models
         public Sys System { get; }
 
         [JsonProperty("weather")]
-        public List<Weather> Weather { get; }
+        public IReadOnlyList<Weather> Weather { get; }
 
         [JsonProperty("main")]
         public Main MainWeather { get; }
@@ -141,7 +141,7 @@ namespace MyWeather.Models
         public int Cnt { get; }
 
         [JsonProperty("list")]
-        public List<WeatherRoot> Items { get; }
+        public IReadOnlyList<WeatherRoot> Items { get; }
     }
 
     class City

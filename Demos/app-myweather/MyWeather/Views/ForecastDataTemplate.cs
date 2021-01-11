@@ -1,7 +1,7 @@
 ﻿using MyWeather.Models;
 using Xamarin.Forms;
-using Xamarin.Forms.Markup;
-using static Xamarin.Forms.Markup.GridRowsColumns;
+using Xamarin.CommunityToolkit.Markup;
+using static Xamarin.CommunityToolkit.Markup.GridRowsColumns;
 using static MyWeather.MarkupExtensions;
 
 namespace MyWeather

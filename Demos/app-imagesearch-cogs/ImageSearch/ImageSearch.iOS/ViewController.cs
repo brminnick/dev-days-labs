@@ -1,10 +1,7 @@
 ﻿using System;
-
 using Foundation;
-
 using ImageSearch.ViewModel;
 using SDWebImage;
-
 using UIKit;
 
 namespace ImageSearch.iOS

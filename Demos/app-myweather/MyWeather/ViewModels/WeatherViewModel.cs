@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using AsyncAwaitBestPractices;
 using AsyncAwaitBestPractices.MVVM;
+using FFImageLoading;
 using MyWeather.Models;
 using MyWeather.Services;
 using Xamarin.Essentials;
@@ -34,7 +35,7 @@ namespace MyWeather.ViewModels
 
         public IAsyncCommand GetWeatherCommand => getWeatherCommand ??= new AsyncCommand(() => ExecuteGetWeatherCommand(UseGPS, IsImperial, Location), _ => !IsBusy);
 
-        public IReadOnlyList<WeatherRoot> ForecastItems => Forecast?.Items ?? Enumerable.Empty<WeatherRoot>().ToList();
+        public IReadOnlyList<WeatherRoot> ForecastItems => Forecast?.Items ?? Array.Empty<WeatherRoot>();
 
         public string Location
         {
@@ -119,6 +120,9 @@ namespace MyWeather.ViewModels
             {
                 IsBusy = false;
             }
+
+            foreach (var weather in Forecast?.Items ?? Enumerable.Empty<WeatherRoot>())
+                ImageService.Instance.LoadUrl(weather.DisplayIcon).PreloadAsync().SafeFireAndForget(ex => DebugServices.Report(ex));
         }
 
         protected void SetProperty<T>(ref T backingStore, in T value, in Action? onChanged = null, [CallerMemberName] in string propertyname = "")
